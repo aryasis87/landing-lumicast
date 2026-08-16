@@ -1,7 +1,7 @@
 import Hero from "./components/Hero";
+import Rundown from "./components/Rundown";
 import About from "./components/About";
 import Speakers from "./components/Speakers";
-import Schedule from "./components/Schedule";
 import TargetAudience from "./components/TargetAudience";
 import Pricing from "./components/Pricing";
 import FAQ from "./components/FAQ";
@@ -17,7 +17,7 @@ export default function Home() {
         <Hero />
         <About />
         <Speakers />
-        <Schedule />
+        <Rundown />
         <TargetAudience />
         <Pricing />
         <FAQ />

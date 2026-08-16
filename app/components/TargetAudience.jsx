@@ -21,25 +21,25 @@ const TargetAudience = () => {
 
   const audiences = [
     {
-      icon: <UsersIcon className="w-6 h-6 text-red-600" aria-hidden="true" />,
+      icon: <UsersIcon className="w-6 h-6 text-live" aria-hidden="true" />,
       title: "Pengurus Inti Gen 9",
       description: "Ketua, Sekretaris, Bendahara, dan koordinator divisi yang membutuhkan pemahaman mendalam tentang manajemen organisasi",
       roles: ["Ketua Umum", "Sekretaris", "Bendahara", "Koordinator Divisi"]
     },
     {
-      icon: <BriefcaseIcon className="w-6 h-6 text-red-600" aria-hidden="true" />,
+      icon: <BriefcaseIcon className="w-6 h-6 text-live" aria-hidden="true" />,
       title: "Anggota Aktif",
       description: "Member aktif yang ingin berkontribusi lebih dalam kegiatan organisasi dan pengembangan komunitas",
       roles: ["Staff Divisi", "Volunteer Aktif", "Member Engaged"]
     },
     {
-      icon: <LightBulbIcon className="w-6 h-6 text-red-600" aria-hidden="true" />,
+      icon: <LightBulbIcon className="w-6 h-6 text-live" aria-hidden="true" />,
       title: "Calon Pengurus",
       description: "Anggota yang berencana aktif di kepengurusan dan ingin mempersiapkan diri dengan baik",
       roles: ["Aspirant Leader", "Future Board Member", "Talent Pool"]
     },
     {
-      icon: <AcademicCapIcon className="w-6 h-6 text-red-600" aria-hidden="true" />,
+      icon: <AcademicCapIcon className="w-6 h-6 text-live" aria-hidden="true" />,
       title: "Alumni & Mentor",
       description: "Pengurus generasi sebelumnya yang ingin berbagi pengalaman dan menjadi mentor",
       roles: ["Alumni Gen 1-8", "Advisor", "Mentor"]
@@ -61,10 +61,10 @@ const TargetAudience = () => {
         <div className="container mx-auto px-4">
           {/* Header */}
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-light text-gray-900 mb-3">
-              Untuk <span className="text-red-600 font-bold">Siapa?</span>
+            <h2 className="text-3xl font-light text-ink mb-3">
+              Untuk <span className="text-live font-bold">Siapa?</span>
             </h2>
-            <p className="text-gray-600 text-sm">
+            <p className="text-ink-soft text-sm">
               Training ini dirancang untuk seluruh elemen IAI Muda Malang Raya Gen 9 yang ingin meningkatkan kapabilitas kepengurusan.
             </p>
           </div>
@@ -78,26 +78,26 @@ const TargetAudience = () => {
               >
                 {audiences.map((audience, index) => (
                   <div key={index} className="w-full flex-shrink-0 px-2">
-                    <div className="bg-white border border-gray-200 rounded-lg p-6 min-h-[400px] flex flex-col">
+                    <div className="bg-white border border-rule rounded-lg p-6 min-h-[400px] flex flex-col">
                       {/* Icon */}
                       <div
-                        className="p-3 bg-red-50 rounded-md w-12 h-12 flex items-center justify-center mb-4"
+                        className="p-3 bg-sheet-2 rounded-md w-12 h-12 flex items-center justify-center mb-4"
                         aria-label={`Ikon untuk ${audience.title}`}
                       >
                         {audience.icon}
                       </div>
 
                       {/* Content */}
-                      <h3 className="text-xl font-medium text-gray-900 mb-3">{audience.title}</h3>
-                      <p className="text-gray-600 text-sm mb-4 flex-grow leading-relaxed">{audience.description}</p>
+                      <h3 className="text-xl font-medium text-ink mb-3">{audience.title}</h3>
+                      <p className="text-ink-soft text-sm mb-4 flex-grow leading-relaxed">{audience.description}</p>
 
                       {/* Roles */}
-                      <div className="pt-4 border-t border-gray-100">
-                        <h4 className="text-xs text-gray-500 uppercase tracking-wider mb-3">Posisi Terkait:</h4>
+                      <div className="pt-4 border-t border-rule">
+                        <h4 className="text-xs text-ink-soft uppercase tracking-wider mb-3">Posisi Terkait:</h4>
                         <ul className="space-y-2" role="list">
                           {audience.roles.map((role, i) => (
-                            <li key={i} role="listitem" className="text-sm text-gray-600 flex items-start">
-                              <span className="text-red-600 mr-2">•</span>
+                            <li key={i} role="listitem" className="text-sm text-ink-soft flex items-start">
+                              <span className="text-live mr-2">•</span>
                               {role}
                             </li>
                           ))}
@@ -112,17 +112,17 @@ const TargetAudience = () => {
             {/* Navigation Buttons */}
             <button
               onClick={prevSlide}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white p-2 rounded-full shadow-lg hover:bg-gray-50 transition-colors z-10"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white p-2 rounded-full shadow-lg hover:bg-sheet-2 transition-colors z-10"
               aria-label="Audience sebelumnya"
             >
-              <ChevronLeftIcon className="w-6 h-6 text-gray-600" />
+              <ChevronLeftIcon className="w-6 h-6 text-ink-soft" />
             </button>
             <button
               onClick={nextSlide}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white p-2 rounded-full shadow-lg hover:bg-gray-50 transition-colors z-10"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white p-2 rounded-full shadow-lg hover:bg-sheet-2 transition-colors z-10"
               aria-label="Audience selanjutnya"
             >
-              <ChevronRightIcon className="w-6 h-6 text-gray-600" />
+              <ChevronRightIcon className="w-6 h-6 text-ink-soft" />
             </button>
 
             {/* Dots Indicator */}
@@ -132,7 +132,7 @@ const TargetAudience = () => {
                   key={index}
                   onClick={() => setCurrentSlide(index)}
                   className={`h-2 rounded-full transition-all ${
-                    currentSlide === index ? 'bg-red-600 w-8' : 'bg-gray-300 w-2'
+                    currentSlide === index ? 'bg-live w-8' : 'bg-rule w-2'
                   }`}
                   aria-label={`Slide ${index + 1}`}
                 />
@@ -145,24 +145,24 @@ const TargetAudience = () => {
             initial={shouldReduceMotion ? false : { opacity: 0 }}
             whileInView={shouldReduceMotion ? {} : { opacity: 1 }}
             viewport={{ once: true }}
-            className="mt-10 p-5 bg-red-50 rounded-lg border border-red-100"
+            className="mt-10 p-5 bg-sheet-2 rounded-lg border border-rule"
           >
-            <h3 className="text-base font-medium text-gray-900 mb-3 text-center">Kenapa Harus Ikut?</h3>
-            <ul className="space-y-2 text-sm text-gray-700">
+            <h3 className="text-base font-medium text-ink mb-3 text-center">Kenapa Harus Ikut?</h3>
+            <ul className="space-y-2 text-sm text-ink-soft">
               <li className="flex items-start">
-                <span className="text-red-600 mr-2 mt-0.5">✓</span>
+                <span className="text-live mr-2 mt-0.5">✓</span>
                 <span>Meningkatkan skill kepemimpinan</span>
               </li>
               <li className="flex items-start">
-                <span className="text-red-600 mr-2 mt-0.5">✓</span>
+                <span className="text-live mr-2 mt-0.5">✓</span>
                 <span>Networking dengan sesama pengurus</span>
               </li>
               <li className="flex items-start">
-                <span className="text-red-600 mr-2 mt-0.5">✓</span>
+                <span className="text-live mr-2 mt-0.5">✓</span>
                 <span>Best practice dari expert</span>
               </li>
               <li className="flex items-start">
-                <span className="text-red-600 mr-2 mt-0.5">✓</span>
+                <span className="text-live mr-2 mt-0.5">✓</span>
                 <span>Sertifikat resmi dari IAI Muda</span>
               </li>
             </ul>
@@ -175,10 +175,10 @@ const TargetAudience = () => {
             viewport={{ once: true }}
             className="mt-8 text-center"
           >
-            <p className="text-gray-500 mb-4 text-sm">Masih ragu? Hubungi kami untuk informasi lebih lanjut</p>
+            <p className="text-ink-soft mb-4 text-sm">Masih ragu? Hubungi kami untuk informasi lebih lanjut</p>
             <a
               href="#register"
-              className="inline-block px-6 py-2.5 bg-red-700 text-white rounded-md hover:bg-red-800 transition-colors text-sm font-medium"
+              className="inline-block px-6 py-2.5 bg-live text-white rounded-md hover:bg-deck transition-colors text-sm font-medium"
             >
               Daftar Sekarang
             </a>
@@ -194,10 +194,10 @@ const TargetAudience = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl sm:text-5xl font-light text-gray-900 mb-3">
-            Untuk <span className="text-red-600 font-bold">Siapa?</span>
+          <h2 className="text-4xl sm:text-5xl font-light text-ink mb-3">
+            Untuk <span className="text-live font-bold">Siapa?</span>
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-ink-soft max-w-2xl mx-auto">
             Training ini dirancang untuk seluruh elemen IAI Muda Malang Raya Gen 9 yang ingin meningkatkan kapabilitas kepengurusan.
           </p>
         </div>
@@ -212,28 +212,28 @@ const TargetAudience = () => {
               viewport={{ once: true }}
               transition={{ delay: shouldReduceMotion ? 0 : index * 0.1 }}
               role="listitem"
-              className="bg-white border border-gray-200 rounded-lg p-6 hover:border-red-200 hover:shadow-md transition-all"
+              className="bg-white border border-rule rounded-lg p-6 hover:border-rule hover:shadow-md transition-all"
             >
               <div className="flex flex-col h-full">
                 {/* Icon */}
                 <div
-                  className="p-2 bg-red-50 rounded-md w-10 h-10 flex items-center justify-center mb-4"
+                  className="p-2 bg-sheet-2 rounded-md w-10 h-10 flex items-center justify-center mb-4"
                   aria-label={`Ikon untuk ${audience.title}`}
                 >
                   {audience.icon}
                 </div>
 
                 {/* Content */}
-                <h3 className="text-lg font-medium text-gray-900 mb-2">{audience.title}</h3>
-                <p className="text-gray-600 text-sm mb-4 flex-grow">{audience.description}</p>
+                <h3 className="text-lg font-medium text-ink mb-2">{audience.title}</h3>
+                <p className="text-ink-soft text-sm mb-4 flex-grow">{audience.description}</p>
 
                 {/* Roles */}
-                <div className="pt-4 border-t border-gray-100">
-                  <h4 className="text-xs text-gray-500 uppercase tracking-wider mb-2">Posisi Terkait:</h4>
+                <div className="pt-4 border-t border-rule">
+                  <h4 className="text-xs text-ink-soft uppercase tracking-wider mb-2">Posisi Terkait:</h4>
                   <ul className="space-y-1.5" role="list">
                     {audience.roles.map((role, i) => (
-                      <li key={i} role="listitem" className="text-sm text-gray-600 flex items-start">
-                        <span className="text-red-600 mr-2">•</span>
+                      <li key={i} role="listitem" className="text-sm text-ink-soft flex items-start">
+                        <span className="text-live mr-2">•</span>
                         {role}
                       </li>
                     ))}
@@ -249,24 +249,24 @@ const TargetAudience = () => {
           initial={shouldReduceMotion ? false : { opacity: 0 }}
           whileInView={shouldReduceMotion ? {} : { opacity: 1 }}
           viewport={{ once: true }}
-          className="mt-12 p-6 bg-red-50 rounded-lg border border-red-100 max-w-3xl mx-auto"
+          className="mt-12 p-6 bg-sheet-2 rounded-lg border border-rule max-w-3xl mx-auto"
         >
-          <h3 className="text-lg font-medium text-gray-900 mb-3 text-center">Kenapa Harus Ikut?</h3>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-gray-700">
+          <h3 className="text-lg font-medium text-ink mb-3 text-center">Kenapa Harus Ikut?</h3>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-ink-soft">
             <li className="flex items-start">
-              <span className="text-red-600 mr-2 mt-0.5">✓</span>
+              <span className="text-live mr-2 mt-0.5">✓</span>
               <span>Meningkatkan skill kepemimpinan</span>
             </li>
             <li className="flex items-start">
-              <span className="text-red-600 mr-2 mt-0.5">✓</span>
+              <span className="text-live mr-2 mt-0.5">✓</span>
               <span>Networking dengan sesama pengurus</span>
             </li>
             <li className="flex items-start">
-              <span className="text-red-600 mr-2 mt-0.5">✓</span>
+              <span className="text-live mr-2 mt-0.5">✓</span>
               <span>Best practice dari expert</span>
             </li>
             <li className="flex items-start">
-              <span className="text-red-600 mr-2 mt-0.5">✓</span>
+              <span className="text-live mr-2 mt-0.5">✓</span>
               <span>Sertifikat resmi dari IAI Muda</span>
             </li>
           </ul>
@@ -279,10 +279,10 @@ const TargetAudience = () => {
           viewport={{ once: true }}
           className="mt-12 text-center"
         >
-          <p className="text-gray-500 mb-4">Masih ragu? Hubungi kami untuk informasi lebih lanjut</p>
+          <p className="text-ink-soft mb-4">Masih ragu? Hubungi kami untuk informasi lebih lanjut</p>
           <a
             href="#register"
-            className="inline-block px-6 py-2.5 bg-red-700 text-white rounded-md hover:bg-red-800 transition-colors text-sm font-medium"
+            className="inline-block px-6 py-2.5 bg-live text-white rounded-md hover:bg-deck transition-colors text-sm font-medium"
           >
             Daftar Sekarang
           </a>

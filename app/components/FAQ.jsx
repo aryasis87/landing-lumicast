@@ -5,15 +5,15 @@ import dynamic from 'next/dynamic';
 
 // Lazy load icons
 const ChevronDownIcon = dynamic(() => import('@heroicons/react/24/outline').then(mod => mod.ChevronDownIcon), {
-  loading: () => <span className="inline-block w-5 h-5 bg-gray-200 rounded" />
+  loading: () => <span className="inline-block w-5 h-5 bg-rule/60 rounded" />
 });
 
 const ChevronUpIcon = dynamic(() => import('@heroicons/react/24/outline').then(mod => mod.ChevronUpIcon), {
-  loading: () => <span className="inline-block w-5 h-5 bg-gray-200 rounded" />
+  loading: () => <span className="inline-block w-5 h-5 bg-rule/60 rounded" />
 });
 
 const EnvelopeIcon = dynamic(() => import('@heroicons/react/24/outline').then(mod => mod.EnvelopeIcon), {
-  loading: () => <span className="inline-block w-4 h-4 bg-gray-200 rounded" />
+  loading: () => <span className="inline-block w-4 h-4 bg-rule/60 rounded" />
 });
 
 const FAQ = () => {
@@ -63,10 +63,10 @@ const FAQ = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
         {/* Header */}
         <div className="text-center mb-8 md:mb-12">
-          <h2 id="faq-heading" className="text-3xl sm:text-4xl md:text-5xl font-light text-gray-900 mb-3">
-            <span className="text-red-600 font-bold">Pertanyaan</span> Umum
+          <h2 id="faq-heading" className="text-3xl sm:text-4xl md:text-5xl font-light text-ink mb-3">
+            <span className="text-live font-bold">Pertanyaan</span> Umum
           </h2>
-          <p className="text-gray-600 max-w-md mx-auto">
+          <p className="text-ink-soft max-w-md mx-auto">
             Temukan jawaban untuk pertanyaan yang sering diajukan seputar training ini.
           </p>
         </div>
@@ -80,7 +80,7 @@ const FAQ = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "50px" }}
               transition={{ delay: index * 0.05, duration: 0.2 }}
-              className="border-b border-gray-200"
+              className="border-b border-rule"
             >
               <button
                 onClick={() => toggleAccordion(index)}
@@ -88,13 +88,13 @@ const FAQ = () => {
                 aria-expanded={activeIndex === index}
                 aria-controls={`faq-${index}`}
               >
-                <h3 className="text-base md:text-lg font-medium text-gray-900 pr-4">
+                <h3 className="text-base md:text-lg font-medium text-ink pr-4">
                   {faq.question}
                 </h3>
                 {activeIndex === index ? (
-                  <ChevronUpIcon className="w-5 h-5 text-red-600 flex-shrink-0" aria-hidden="true" />
+                  <ChevronUpIcon className="w-5 h-5 text-live flex-shrink-0" aria-hidden="true" />
                 ) : (
-                  <ChevronDownIcon className="w-5 h-5 text-gray-500 flex-shrink-0" aria-hidden="true" />
+                  <ChevronDownIcon className="w-5 h-5 text-ink-soft flex-shrink-0" aria-hidden="true" />
                 )}
               </button>
 
@@ -109,7 +109,7 @@ const FAQ = () => {
                 className="overflow-hidden"
                 aria-hidden={activeIndex !== index}
               >
-                <div className="pb-4 md:pb-6 text-gray-600 text-sm md:text-base">
+                <div className="pb-4 md:pb-6 text-ink-soft text-sm md:text-base">
                   <p>{faq.answer}</p>
                 </div>
               </motion.div>
@@ -119,11 +119,11 @@ const FAQ = () => {
 
         {/* CTA */}
         <div className="mt-10 md:mt-12 text-center">
-          <p className="text-gray-500 mb-3 md:mb-4">Masih ada pertanyaan lain?</p>
+          <p className="text-ink-soft mb-3 md:mb-4">Masih ada pertanyaan lain?</p>
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center px-4 py-2 border border-red-600 text-red-600 rounded-md hover:bg-red-50 transition-colors text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500"
+            className="inline-flex items-center px-4 py-2 border border-live text-live rounded-md hover:bg-sheet-2 transition-colors text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500"
           >
             <EnvelopeIcon className="w-4 h-4 mr-2" aria-hidden="true" />
             Hubungi Panitia

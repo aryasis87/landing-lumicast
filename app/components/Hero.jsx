@@ -1,226 +1,95 @@
 'use client';
-import { motion, useAnimation } from 'framer-motion';
-import { useEffect } from 'react';
-import Image from 'next/image';
-import dynamic from 'next/dynamic';
-import { ArrowRightIcon } from '@heroicons/react/24/solid';
 
-// Lazy load non-critical icons
-const CalendarIcon = dynamic(() => import('@heroicons/react/24/solid').then(mod => mod.CalendarIcon), {
-  ssr: false,
-  loading: () => <div className="w-5 h-5 bg-gray-200 rounded animate-pulse" />
-});
+import { motion } from 'framer-motion';
 
-const ClockIcon = dynamic(() => import('@heroicons/react/24/solid').then(mod => mod.ClockIcon), {
-  ssr: false,
-  loading: () => <div className="w-5 h-5 bg-gray-200 rounded animate-pulse" />
-});
+const berkas = [
+  ['Penyelenggara', 'IAI Muda Komisariat Malang'],
+  ['Format', 'In-house training, daring'],
+  ['Durasi', '180 menit · 3 segmen'],
+  ['Peserta', 'Anggota muda & umum'],
+];
 
-const MapPinIcon = dynamic(() => import('@heroicons/react/24/solid').then(mod => mod.MapPinIcon), {
-  ssr: false,
-  loading: () => <div className="w-5 h-5 bg-gray-200 rounded animate-pulse" />
-});
-
-const Hero = () => {
-  const controls = useAnimation();
-
-  useEffect(() => {
-    controls.start('visible');
-  }, [controls]);
-
-  // Optimized animations for performance
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: 'tween',
-        ease: 'easeOut',
-        duration: 0.4
-      }
-    }
-  };
-
+export default function Hero() {
   return (
-    <section className="relative w-full min-h-screen bg-white overflow-hidden" aria-labelledby="hero-heading">
-      {/* Background with reduced complexity */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-red-50"></div>
-        <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-white to-transparent"></div>
-      </div>
-
-      {/* Main Content */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center pt-16 pb-12 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center w-full">
-          {/* Text Content */}
-          <motion.div
-            initial="hidden"
-            animate={controls}
-            variants={containerVariants}
-            className="text-center lg:text-left"
-          >
-            {/* Badge */}
-            <motion.div
-              variants={itemVariants}
-              className="inline-flex items-center px-3 py-1.5 rounded-full bg-red-100 text-red-600 text-sm font-medium mb-4 md:mb-6"
-              aria-label="Training status"
-            >
-              <span className="w-2 h-2 rounded-full bg-red-500 mr-2"></span>
-              Training Langsung • Terbatas
-            </motion.div>
-
-            {/* Title */}
-            <motion.h1
-              variants={itemVariants}
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-gray-900 mb-4"
-              id="hero-heading"
-            >
-              <span className="text-red-600">In House Training</span> 2023
-            </motion.h1>
-
-            {/* Subtitle/Tema */}
-            <motion.h2
-              variants={itemVariants}
-              className="text-xl sm:text-2xl font-semibold text-gray-800 mb-6"
-            >
-              Internalisasi Pemahaman dan Kapabilitas Kepengurusan Organisasi
-            </motion.h2>
-
-            {/* Description */}
+    <section className="relative overflow-hidden bg-deck pt-28 pb-0 text-white md:pt-36">
+      <div className="relative z-10 mx-auto max-w-6xl px-6">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-16">
+          <div>
             <motion.p
-              variants={itemVariants}
-              className="text-base sm:text-lg text-gray-600 mt-4 md:mt-6 mb-6 md:mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="slug on-air mb-7 flex items-center text-white/70"
             >
-              IAI Muda Malang Raya Gen 9 - <span className="font-semibold text-red-600">#Muda, Berani, Berintegritas!</span>
+              Siaran terjadwal · Satu hari penuh
             </motion.p>
 
-            {/* Event Info */}
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-row gap-2 justify-center lg:justify-start mb-8 md:mb-10 flex-wrap"
+            <motion.h1
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.08 }}
+              className="text-[2.5rem] leading-[1.02] font-semibold text-white sm:text-5xl lg:text-[3.9rem]"
             >
-              <div className="flex items-center bg-white px-2 py-1.5 rounded-lg border border-gray-200 shadow-xs">
-                <CalendarIcon className="w-4 h-4 text-red-500 mr-1.5" />
-                <div>
-                  <p className="text-xs font-medium text-gray-900">16 Sept 2023</p>
-                </div>
-              </div>
-              <div className="flex items-center bg-white px-2 py-1.5 rounded-lg border border-gray-200 shadow-xs">
-                <ClockIcon className="w-4 h-4 text-red-500 mr-1.5" />
-                <div>
-                  <p className="text-xs font-medium text-gray-900">09:00 - Selesai</p>
-                </div>
-              </div>
-              <div className="flex items-center bg-white px-2 py-1.5 rounded-lg border border-gray-200 shadow-xs">
-                <MapPinIcon className="w-4 h-4 text-red-500 mr-1.5" />
-                <div>
-                  <p className="text-xs font-medium text-gray-900">Online</p>
-                </div>
-              </div>
-            </motion.div>
+              Acaranya dimulai
+              <br />
+              <span className="text-live">tepat menit ke-nol.</span>
+            </motion.h1>
 
-            {/* Organizer Info - Desktop Only */}
-            <motion.div
-              variants={itemVariants}
-              className="mb-6 md:mb-8 p-4 bg-white/50 rounded-lg border border-gray-200 max-w-2xl mx-auto lg:mx-0 lg:block hidden"
-            >
-              <p className="text-sm text-gray-600 mb-1">Penyelenggara:</p>
-              <p className="font-semibold text-gray-900">IAI MUDA KOMISARIAT MALANG</p>
-              <p className="text-xs text-gray-500 mt-1">Anggota Muda Ikatan Akuntan Indonesia Komisariat Malang</p>
-            </motion.div>
+            <motion.p className="mt-7 max-w-lg leading-relaxed text-white/65">
+              In-house training yang dijalankan dengan rundown tercetak: tiap segmen punya durasi
+              pasti, dan tiap pergantian sudah dihitung. Anda tahu persis kapan bisa kembali ke
+              pekerjaan.
+            </motion.p>
 
-            {/* CTA Button - Desktop Only */}
             <motion.div
-              variants={itemVariants}
-              className="hidden lg:flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.24 }}
+              className="mt-9 flex flex-col gap-4 sm:flex-row"
             >
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-2.5 md:px-8 md:py-3 rounded-lg shadow-sm font-medium transition-colors"
-                aria-label="Daftar training sekarang"
+              <a
+                href="#daftar"
+                className="inline-flex items-center justify-center bg-live px-8 py-4 text-sm font-semibold text-white transition-opacity duration-300 hover:opacity-90"
               >
                 Daftar Sekarang
-                <ArrowRightIcon className="w-4 h-4 md:w-5 md:h-5" />
-              </motion.button>
+              </a>
+              <a
+                href="#rundown"
+                className="inline-flex items-center justify-center border border-white/25 px-8 py-4 text-sm font-semibold text-white transition-colors duration-300 hover:border-white/60"
+              >
+                Baca Rundown
+              </a>
             </motion.div>
-          </motion.div>
+          </div>
 
-          {/* Image Content */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ 
-              opacity: 1, 
-              scale: 1,
-              transition: { delay: 0.3, duration: 0.6 }
-            }}
-            className="relative h-full w-full min-h-[400px] md:min-h-[500px] lg:min-h-[600px]"
+          {/* Kartu berkas acara — meniru header lembar rundown */}
+          <motion.dl
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="h-fit bg-white/5 p-7 backdrop-blur-sm"
           >
-            <div className="absolute inset-0 flex items-center justify-center p-6 md:p-8">
-              <div className="relative w-full h-full aspect-[4/3]">
-                <Image
-                  src="/images/webinar5.jpg"
-                  alt="In House Training IAI Muda Malang Raya"
-                  fill
-                  className="object-contain object-center"
-                  priority
-                  quality={85}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  loading="eager"
-                />
+            <p className="slug mb-6 border-b border-white/20 pb-4 text-white/50">Berkas Acara</p>
+            {berkas.map(([k, v]) => (
+              <div key={k} className="flex flex-col gap-1 border-b border-white/12 py-4 last:border-b-0 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+                <dt className="slug text-white/45">{k}</dt>
+                <dd className="text-sm font-medium text-white sm:text-right">{v}</dd>
               </div>
+            ))}
+          </motion.dl>
+        </div>
+      </div>
+
+      {/* Pita waktu di kaki hero */}
+      <div className="relative z-10 mt-14 border-t border-white/15">
+        <div className="mx-auto grid max-w-6xl grid-cols-2 px-6 sm:grid-cols-4">
+          {['08.30 Registrasi', '09.00 Segmen I', '11.00 Segmen II', '13.30 Segmen III'].map((t) => (
+            <div key={t} className="timecol border-white/15 px-4 py-5 first:border-l-0">
+              <span className="slug tnum text-white/55">{t}</span>
             </div>
-          </motion.div>
-
-          {/* Mobile-only content after image */}
-          <motion.div
-            initial="hidden"
-            animate={controls}
-            variants={containerVariants}
-            className="lg:hidden space-y-6"
-          >
-            {/* Organizer Info - Mobile */}
-            <motion.div
-              variants={itemVariants}
-              className="p-4 bg-white/50 rounded-lg border border-gray-200 max-w-2xl mx-auto"
-            >
-              <p className="text-sm text-gray-600 mb-1">Penyelenggara:</p>
-              <p className="font-semibold text-gray-900">IAI MUDA KOMISARIAT MALANG</p>
-              <p className="text-xs text-gray-500 mt-1">Anggota Muda Ikatan Akuntan Indonesia Komisariat Malang</p>
-            </motion.div>
-
-            {/* CTA Button - Mobile */}
-            <motion.div
-              variants={itemVariants}
-              className="flex justify-center"
-            >
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg shadow-sm font-medium transition-colors w-full max-w-md"
-                aria-label="Daftar training sekarang"
-              >
-                Daftar Sekarang
-                <ArrowRightIcon className="w-5 h-5" />
-              </motion.button>
-            </motion.div>
-          </motion.div>
+          ))}
         </div>
       </div>
     </section>
   );
-};
-
-export default Hero;
+}

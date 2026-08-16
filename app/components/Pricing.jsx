@@ -77,10 +77,10 @@ const Pricing = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="text-center mb-12">
-            <h1 className="text-3xl sm:text-4xl font-light text-gray-900 mb-3">
-              <span className="text-red-600 font-bold">Pilihan</span> Paket
+            <h1 className="text-3xl sm:text-4xl font-light text-ink mb-3">
+              <span className="text-live font-bold">Pilihan</span> Paket
             </h1>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-ink-soft max-w-2xl mx-auto">
               Pilih paket yang sesuai dengan kebutuhan Anda.
             </p>
           </div>
@@ -97,14 +97,14 @@ const Pricing = () => {
                     <div
                       className={`relative border rounded-lg overflow-hidden ${
                         plan.popular 
-                          ? 'border-red-300 shadow-lg' 
-                          : 'border-gray-200'
+                          ? 'border-live/40 shadow-lg' 
+                          : 'border-rule'
                       }`}
                       aria-labelledby={`plan-${index}-title`}
                     >
                       {/* Popular Badge */}
                       {plan.popular && (
-                        <div className="absolute top-0 right-0 bg-red-600 text-white text-xs font-medium px-3 py-1 rounded-bl-lg z-10">
+                        <div className="absolute top-0 right-0 bg-live text-white text-xs font-medium px-3 py-1 rounded-bl-lg z-10">
                           <div className="flex items-center">
                             <StarIcon className="w-3 h-3 mr-1" aria-hidden="true" />
                             <span>POPULER</span>
@@ -115,23 +115,23 @@ const Pricing = () => {
                       {/* Header */}
                       <div className={`p-6 ${
                         plan.popular 
-                          ? 'bg-red-50 border-b border-red-100' 
-                          : 'bg-gray-50 border-b border-gray-100'
+                          ? 'bg-sheet-2 border-b border-rule' 
+                          : 'bg-sheet-2 border-b border-rule'
                       }`}>
                         <h2 id={`plan-${index}-title`} className={`text-lg font-medium ${
-                          plan.popular ? 'text-red-600' : 'text-gray-900'
+                          plan.popular ? 'text-live' : 'text-ink'
                         }`}>
                           {plan.name}
                         </h2>
                         <div className="mt-2">
                           <span className={`text-2xl font-bold ${
-                            plan.popular ? 'text-red-600' : 'text-gray-900'
+                            plan.popular ? 'text-live' : 'text-ink'
                           }`}>
                             {plan.price}
                           </span>
                           {plan.duration && (
                             <span className={`text-sm ml-1 ${
-                              plan.popular ? 'text-red-500' : 'text-gray-500'
+                              plan.popular ? 'text-live' : 'text-ink-soft'
                             }`}>
                               / {plan.duration}
                             </span>
@@ -146,11 +146,11 @@ const Pricing = () => {
                             <li key={i} className="flex items-start">
                               <CheckCircleIcon 
                                 className={`w-4 h-4 mt-0.5 mr-2 flex-shrink-0 ${
-                                  plan.popular ? 'text-red-500' : 'text-gray-400'
+                                  plan.popular ? 'text-live' : 'text-ink-soft'
                                 }`} 
                                 aria-hidden="true"
                               />
-                              <span className="text-gray-600 text-sm">{feature}</span>
+                              <span className="text-ink-soft text-sm">{feature}</span>
                             </li>
                           ))}
                         </ul>
@@ -159,8 +159,8 @@ const Pricing = () => {
                         <button 
                           className={`w-full py-2.5 rounded-md text-sm font-medium transition-colors ${
                             plan.popular
-                              ? 'bg-red-600 hover:bg-red-700 text-white'
-                              : 'bg-white hover:bg-gray-50 text-gray-800 border border-gray-300'
+                              ? 'bg-live hover:bg-live text-white'
+                              : 'bg-white hover:bg-sheet-2 text-ink border border-rule'
                           }`}
                           aria-label={`Pilih paket ${plan.name} - ${plan.price}`}
                         >
@@ -176,17 +176,17 @@ const Pricing = () => {
             {/* Navigation Buttons */}
             <button
               onClick={prevSlide}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white p-2 rounded-full shadow-lg hover:bg-gray-50 transition-colors z-10"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white p-2 rounded-full shadow-lg hover:bg-sheet-2 transition-colors z-10"
               aria-label="Paket sebelumnya"
             >
-              <ChevronLeftIcon className="w-6 h-6 text-gray-600" />
+              <ChevronLeftIcon className="w-6 h-6 text-ink-soft" />
             </button>
             <button
               onClick={nextSlide}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white p-2 rounded-full shadow-lg hover:bg-gray-50 transition-colors z-10"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white p-2 rounded-full shadow-lg hover:bg-sheet-2 transition-colors z-10"
               aria-label="Paket selanjutnya"
             >
-              <ChevronRightIcon className="w-6 h-6 text-gray-600" />
+              <ChevronRightIcon className="w-6 h-6 text-ink-soft" />
             </button>
 
             {/* Dots Indicator */}
@@ -196,7 +196,7 @@ const Pricing = () => {
                   key={index}
                   onClick={() => setCurrentSlide(index)}
                   className={`w-2 h-2 rounded-full transition-all ${
-                    currentSlide === index ? 'bg-red-600 w-8' : 'bg-gray-300'
+                    currentSlide === index ? 'bg-live w-8' : 'bg-rule'
                   }`}
                   aria-label={`Slide ${index + 1}`}
                 />
@@ -206,17 +206,17 @@ const Pricing = () => {
 
           {/* Guarantee */}
           <div
-            className="mt-12 p-6 bg-red-50 rounded-lg text-center max-w-md mx-auto"
+            className="mt-12 p-6 bg-sheet-2 rounded-lg text-center max-w-md mx-auto"
             role="region"
             aria-label="Garansi Kepuasan"
           >
             <div className="flex flex-col items-center gap-4">
-              <div className="p-2 bg-white rounded-full border border-red-100">
-                <CheckCircleIcon className="w-6 h-6 text-red-600" aria-hidden="true" />
+              <div className="p-2 bg-white rounded-full border border-rule">
+                <CheckCircleIcon className="w-6 h-6 text-live" aria-hidden="true" />
               </div>
               <div>
-                <h3 className="font-medium text-gray-900">Garansi 100% Puas</h3>
-                <p className="text-gray-600 text-sm mt-1">
+                <h3 className="font-medium text-ink">Garansi 100% Puas</h3>
+                <p className="text-ink-soft text-sm mt-1">
                   Jika tidak sesuai ekspektasi, kami kembalikan uang Anda dalam 7 hari.
                 </p>
               </div>
@@ -233,10 +233,10 @@ const Pricing = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-5xl font-light text-gray-900 mb-3">
-            <span className="text-red-600 font-bold">Pilihan</span> Paket
+          <h1 className="text-5xl font-light text-ink mb-3">
+            <span className="text-live font-bold">Pilihan</span> Paket
           </h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-ink-soft max-w-2xl mx-auto">
             Pilih paket yang sesuai dengan kebutuhan Anda.
           </p>
         </div>
@@ -257,14 +257,14 @@ const Pricing = () => {
                 }}
                 className={`relative border rounded-lg overflow-hidden ${
                   plan.popular 
-                    ? 'border-red-300 shadow-sm' 
-                    : 'border-gray-200'
+                    ? 'border-live/40 shadow-sm' 
+                    : 'border-rule'
                 }`}
                 aria-labelledby={`plan-${index}-title`}
               >
                 {/* Popular Badge */}
                 {plan.popular && (
-                  <div className="absolute top-5 right-0 bg-red-600 text-white text-xs font-medium px-3 py-1 transform translate-x-2 -translate-y-2 rounded-l-xl">
+                  <div className="absolute top-5 right-0 bg-live text-white text-xs font-medium px-3 py-1 transform translate-x-2 -translate-y-2 rounded-l-xl">
                     <div className="flex items-center">
                       <StarIcon className="w-3 h-3 mr-1" aria-hidden="true" />
                       <span>POPULER</span>
@@ -275,23 +275,23 @@ const Pricing = () => {
                 {/* Header */}
                 <div className={`p-6 ${
                   plan.popular 
-                    ? 'bg-red-50 border-b border-red-100' 
-                    : 'bg-gray-50 border-b border-gray-100'
+                    ? 'bg-sheet-2 border-b border-rule' 
+                    : 'bg-sheet-2 border-b border-rule'
                 }`}>
                   <h2 id={`plan-${index}-title`} className={`text-lg font-medium ${
-                    plan.popular ? 'text-red-600' : 'text-gray-900'
+                    plan.popular ? 'text-live' : 'text-ink'
                   }`}>
                     {plan.name}
                   </h2>
                   <div className="mt-2">
                     <span className={`text-2xl font-bold ${
-                      plan.popular ? 'text-red-600' : 'text-gray-900'
+                      plan.popular ? 'text-live' : 'text-ink'
                     }`}>
                       {plan.price}
                     </span>
                     {plan.duration && (
                       <span className={`text-sm ml-1 ${
-                        plan.popular ? 'text-red-500' : 'text-gray-500'
+                        plan.popular ? 'text-live' : 'text-ink-soft'
                       }`}>
                         / {plan.duration}
                       </span>
@@ -306,11 +306,11 @@ const Pricing = () => {
                       <li key={i} className="flex items-start">
                         <CheckCircleIcon 
                           className={`w-4 h-4 mt-0.5 mr-2 flex-shrink-0 ${
-                            plan.popular ? 'text-red-500' : 'text-gray-400'
+                            plan.popular ? 'text-live' : 'text-ink-soft'
                           }`} 
                           aria-hidden="true"
                         />
-                        <span className="text-gray-600 text-sm">{feature}</span>
+                        <span className="text-ink-soft text-sm">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -319,8 +319,8 @@ const Pricing = () => {
                   <button 
                     className={`w-full py-2.5 rounded-md text-sm font-medium ${
                       plan.popular
-                        ? 'bg-red-600 hover:bg-red-700 text-white'
-                        : 'bg-white hover:bg-gray-50 text-gray-800 border border-gray-300'
+                        ? 'bg-live hover:bg-live text-white'
+                        : 'bg-white hover:bg-sheet-2 text-ink border border-rule'
                     } transition-colors`}
                     aria-label={`Pilih paket ${plan.name} - ${plan.price}`}
                   >
@@ -336,17 +336,17 @@ const Pricing = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "50px" }}
-            className="mt-12 p-6 bg-red-50 rounded-lg text-center max-w-2xl mx-auto"
+            className="mt-12 p-6 bg-sheet-2 rounded-lg text-center max-w-2xl mx-auto"
             role="region"
             aria-label="Garansi Kepuasan"
           >
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <div className="p-2 bg-white rounded-full border border-red-100">
-                <CheckCircleIcon className="w-6 h-6 text-red-600" aria-hidden="true" />
+              <div className="p-2 bg-white rounded-full border border-rule">
+                <CheckCircleIcon className="w-6 h-6 text-live" aria-hidden="true" />
               </div>
               <div>
-                <h3 className="font-medium text-gray-900">Garansi 100% Puas</h3>
-                <p className="text-gray-600 text-sm mt-1">
+                <h3 className="font-medium text-ink">Garansi 100% Puas</h3>
+                <p className="text-ink-soft text-sm mt-1">
                   Jika tidak sesuai ekspektasi, kami kembalikan uang Anda dalam 7 hari.
                 </p>
               </div>

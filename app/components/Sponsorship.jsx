@@ -51,10 +51,10 @@ const Sponsorship = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-light text-gray-900 mb-3">
-            <span className="text-red-600 font-medium">Partner</span> & Pendukung
+          <h2 className="text-3xl font-light text-ink mb-3">
+            <span className="text-live font-medium">Partner</span> & Pendukung
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-ink-soft max-w-2xl mx-auto">
             Terima kasih kepada partner dan pendukung yang berkontribusi dalam kesuksesan training ini.
           </p>
         </div>
@@ -62,7 +62,7 @@ const Sponsorship = () => {
         {/* Platinum Partners */}
         {platinumPartners.length > 0 && (
           <div className="mb-12">
-            <h3 className="text-center text-lg font-medium text-gray-800 mb-6">Organisasi Induk</h3>
+            <h3 className="text-center text-lg font-medium text-ink mb-6">Organisasi Induk</h3>
             <div className="flex flex-wrap justify-center gap-8">
               {platinumPartners.map((partner, index) => (
                 <motion.a
@@ -74,7 +74,7 @@ const Sponsorship = () => {
                   href={partner.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-col items-center p-6 bg-gray-50 rounded-lg border border-gray-200 hover:border-red-200 transition-colors"
+                  className="flex flex-col items-center p-6 bg-sheet-2 rounded-lg border border-rule hover:border-rule transition-colors"
                 >
                   <div className="relative w-56 h-16 mb-3">
                     <Image
@@ -85,7 +85,7 @@ const Sponsorship = () => {
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
                   </div>
-                  <p className="text-sm text-gray-600 text-center">{partner.description}</p>
+                  <p className="text-sm text-ink-soft text-center">{partner.description}</p>
                 </motion.a>
               ))}
             </div>
@@ -95,7 +95,7 @@ const Sponsorship = () => {
         {/* Gold Partners */}
         {goldPartners.length > 0 && (
           <div className="mb-12">
-            <h3 className="text-center text-lg font-medium text-gray-800 mb-6">Partner Utama</h3>
+            <h3 className="text-center text-lg font-medium text-ink mb-6">Partner Utama</h3>
             <div className="flex flex-wrap justify-center gap-6">
               {goldPartners.map((partner, index) => (
                 <motion.a
@@ -107,7 +107,7 @@ const Sponsorship = () => {
                   href={partner.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-col items-center p-4 bg-gray-50 rounded-md border border-gray-200 hover:border-red-200 transition-colors"
+                  className="flex flex-col items-center p-4 bg-sheet-2 rounded-md border border-rule hover:border-rule transition-colors"
                 >
                   <div className="relative w-40 h-12 mb-2">
                     <Image
@@ -118,7 +118,7 @@ const Sponsorship = () => {
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
                   </div>
-                  <p className="text-xs text-gray-600 text-center">{partner.description}</p>
+                  <p className="text-xs text-ink-soft text-center">{partner.description}</p>
                 </motion.a>
               ))}
             </div>
@@ -128,7 +128,7 @@ const Sponsorship = () => {
         {/* Silver Partners */}
         {silverPartners.length > 0 && (
           <div className="mb-12">
-            <h3 className="text-center text-lg font-medium text-gray-800 mb-6">Partner Pendukung</h3>
+            <h3 className="text-center text-lg font-medium text-ink mb-6">Partner Pendukung</h3>
             <div className="flex flex-wrap justify-center gap-4">
               {silverPartners.map((partner, index) => (
                 <motion.a
@@ -140,7 +140,7 @@ const Sponsorship = () => {
                   href={partner.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-col items-center p-3 bg-gray-50 rounded border border-gray-200 hover:border-red-200 transition-colors"
+                  className="flex flex-col items-center p-3 bg-sheet-2 rounded border border-rule hover:border-rule transition-colors"
                 >
                   <div className="relative w-32 h-10 mb-2">
                     <Image
@@ -151,7 +151,7 @@ const Sponsorship = () => {
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
                   </div>
-                  <p className="text-xs text-gray-600 text-center">{partner.description}</p>
+                  <p className="text-xs text-ink-soft text-center">{partner.description}</p>
                 </motion.a>
               ))}
             </div>
@@ -163,14 +163,14 @@ const Sponsorship = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mt-12 p-6 bg-red-50 rounded-lg border border-red-100 max-w-3xl mx-auto text-center"
+          className="mt-12 p-6 bg-sheet-2 rounded-lg border border-rule max-w-3xl mx-auto text-center"
         >
-          <p className="text-gray-600 mb-4">
+          <p className="text-ink-soft mb-4">
             Training ini terlaksana berkat dukungan dan kolaborasi dari berbagai pihak. 
             Mari terus bersinergi untuk kemajuan profesi akuntansi di Indonesia.
           </p>
-          <div className="pt-4 border-t border-red-200">
-            <p className="text-sm text-gray-600 italic">
+          <div className="pt-4 border-t border-rule">
+            <p className="text-sm text-ink-soft italic">
               "Bersama Membangun Profesionalisme Akuntan Muda Indonesia"
             </p>
           </div>
@@ -181,13 +181,13 @@ const Sponsorship = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mt-8 p-6 bg-gray-50 rounded-lg border border-gray-200 max-w-3xl mx-auto text-center"
+          className="mt-8 p-6 bg-sheet-2 rounded-lg border border-rule max-w-3xl mx-auto text-center"
         >
-          <h3 className="text-lg font-medium text-gray-900 mb-3">Tertarik Menjadi Partner?</h3>
-          <p className="text-gray-600 mb-6">
+          <h3 className="text-lg font-medium text-ink mb-3">Tertarik Menjadi Partner?</h3>
+          <p className="text-ink-soft mb-6">
             Bergabunglah dengan kami dalam mengembangkan ekosistem profesional akuntansi yang lebih baik.
           </p>
-          <button className="inline-flex items-center px-5 py-2.5 border border-red-600 text-red-600 rounded-md hover:bg-red-600 hover:text-white transition-colors text-sm font-medium">
+          <button className="inline-flex items-center px-5 py-2.5 border border-live text-live rounded-md hover:bg-live hover:text-white transition-colors text-sm font-medium">
             Hubungi Kami
           </button>
         </motion.div>
