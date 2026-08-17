@@ -187,7 +187,7 @@ const Sponsorship = () => {
           <p className="text-ink-soft mb-6">
             Bergabunglah dengan kami dalam mengembangkan ekosistem profesional akuntansi yang lebih baik.
           </p>
-          <button className="inline-flex items-center px-5 py-2.5 border border-live text-live rounded-md hover:bg-live hover:text-white transition-colors text-sm font-medium">
+          <button className="inline-flex items-center px-5 py-2.5 border border-live text-sheet rounded-md hover:bg-live hover:text-white transition-colors text-sm font-medium">
             Hubungi Kami
           </button>
         </motion.div>

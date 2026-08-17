@@ -15,8 +15,9 @@
   --color-sheet-2: #f2f5f8;
   --color-rule: #d3dbe4; /* garis kolom */
   --color-ink: #0e1a2b; /* teks utama */
-  --color-ink-soft: #55657a;
-  --color-live: #12a870; /* hijau siaran — penanda status */
+  --color-ink-soft: #47566a;
+  --color-live: #0a6845;
+  --color-live-bright: #34d399; /* varian TERANG: teks di atas bidang gelap */ /* hijau siaran — penanda status */
 }
 
 @layer base {

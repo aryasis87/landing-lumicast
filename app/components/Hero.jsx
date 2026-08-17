@@ -19,7 +19,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="slug on-air mb-7 flex items-center text-white/70"
+              className="slug on-air mb-7 flex items-center text-white"
             >
               Siaran terjadwal · Satu hari penuh
             </motion.p>
@@ -32,10 +32,10 @@ export default function Hero() {
             >
               Acaranya dimulai
               <br />
-              <span className="text-live">tepat menit ke-nol.</span>
+              <span className="text-live-bright">tepat menit ke-nol.</span>
             </motion.h1>
 
-            <motion.p className="mt-7 max-w-lg leading-relaxed text-white/65">
+            <motion.p className="mt-7 max-w-lg leading-relaxed text-white">
               In-house training yang dijalankan dengan rundown tercetak: tiap segmen punya durasi
               pasti, dan tiap pergantian sudah dihitung. Anda tahu persis kapan bisa kembali ke
               pekerjaan.
@@ -69,10 +69,10 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="h-fit bg-white/5 p-7 backdrop-blur-sm"
           >
-            <p className="slug mb-6 border-b border-white/20 pb-4 text-white/50">Berkas Acara</p>
+            <p className="slug mb-6 border-b border-white/20 pb-4 text-white">Berkas Acara</p>
             {berkas.map(([k, v]) => (
               <div key={k} className="flex flex-col gap-1 border-b border-white/12 py-4 last:border-b-0 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
-                <dt className="slug text-white/45">{k}</dt>
+                <dt className="slug text-white">{k}</dt>
                 <dd className="text-sm font-medium text-white sm:text-right">{v}</dd>
               </div>
             ))}
@@ -85,7 +85,7 @@ export default function Hero() {
         <div className="mx-auto grid max-w-6xl grid-cols-2 px-6 sm:grid-cols-4">
           {['08.30 Registrasi', '09.00 Segmen I', '11.00 Segmen II', '13.30 Segmen III'].map((t) => (
             <div key={t} className="timecol border-white/15 px-4 py-5 first:border-l-0">
-              <span className="slug tnum text-white/55">{t}</span>
+              <span className="slug tnum text-white">{t}</span>
             </div>
           ))}
         </div>

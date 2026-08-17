@@ -90,7 +90,7 @@ export default function Rundown() {
         {/* Kepala kolom */}
         <div className="hidden border-y-2 border-ink py-3 md:grid md:grid-cols-[5.5rem_3.5rem_minmax(0,1.6fr)_7rem_minmax(0,1fr)] md:gap-5">
           {['Mulai', 'Durasi', 'Segmen', 'Jenis', 'Penanggung jawab'].map((h) => (
-            <span key={h} className="slug text-ink-soft/70">
+            <span key={h} className="slug text-ink-soft">
               {h}
             </span>
           ))}
@@ -107,7 +107,7 @@ export default function Rundown() {
               className="grid gap-x-5 gap-y-2 border-b border-rule py-5 md:grid-cols-[5.5rem_3.5rem_minmax(0,1.6fr)_7rem_minmax(0,1fr)] md:items-baseline"
             >
               <span className="tnum text-lg font-semibold text-ink md:text-base">{s.mulai}</span>
-              <span className="slug tnum text-ink-soft/70">{s.durasi}</span>
+              <span className="slug tnum text-ink-soft">{s.durasi}</span>
 
               <span>
                 <span className="block font-medium text-ink">{s.judul}</span>
@@ -126,11 +126,11 @@ export default function Rundown() {
         </ol>
 
         <div className="mt-8 flex flex-col gap-3 border-t-2 border-ink pt-5 sm:flex-row sm:items-center sm:justify-between">
-          <span className="slug text-ink-soft/70">Total tayang</span>
+          <span className="slug text-ink-soft">Total tayang</span>
           <span className="tnum text-lg font-semibold text-ink">450 menit · 08.30–16.00 WIB</span>
         </div>
 
-        <p className="slug mt-8 leading-[1.7] text-ink-soft/45">
+        <p className="slug mt-8 leading-[1.7] text-ink-soft">
           Susunan acara di atas adalah contoh untuk keperluan purwarupa desain.
         </p>
       </div>
