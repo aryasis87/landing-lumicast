@@ -5,10 +5,10 @@ import "./globals.css";
 const sora = Sora({ variable: "--font-sora", subsets: ["latin"], weight: ["400", "600", "700", "800"] });
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
 
-const __jsonld = {"@context":"https://schema.org","@type":"WebSite","name":"Lumicast","description":"Webinar eksklusif","url":"https://lumicast.pintuweb.com","inLanguage":"id"};
+const __jsonld = {"@context":"https://schema.org","@type":"WebSite","name":"Lumicast","description":"Webinar eksklusif","url":"https://landing-lumicast.vercel.app","inLanguage":"id"};
 
 export const metadata = {
-  metadataBase: new URL("https://lumicast.pintuweb.com"),
+  metadataBase: new URL("https://landing-lumicast.vercel.app"),
   title: "Lumicast — Webinar Eksklusif untuk Masa Depanmu",
   description: "Lumicast: menerangi pikiran, memperluas wawasan — webinar eksklusif untuk masa depanmu.",
   applicationName: "Lumicast",
@@ -16,11 +16,11 @@ export const metadata = {
   authors: [{ name: "Lumicast" }],
   creator: "Lumicast",
   publisher: "Lumicast",
-  alternates: { canonical: "https://lumicast.pintuweb.com" },
+  alternates: { canonical: "https://landing-lumicast.vercel.app" },
   openGraph: {
     type: "website",
     locale: "id_ID",
-    url: "https://lumicast.pintuweb.com",
+    url: "https://landing-lumicast.vercel.app",
     siteName: "Lumicast",
     title: "Lumicast — Webinar Eksklusif untuk Masa Depanmu",
     description: "Lumicast: menerangi pikiran, memperluas wawasan — webinar eksklusif untuk masa depanmu.",
