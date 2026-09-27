@@ -1,98 +1,39 @@
-Berikut adalah **`README.md`** untuk landing page webinar berbasis **Next.js** dengan **App Router**, **Tailwind CSS**, dan **Framer Motion**:  
+# Lumicast — Webinar Eksklusif untuk Masa Depanmu
 
----
+Lumicast: menerangi pikiran, memperluas wawasan — webinar eksklusif untuk masa depanmu.
 
-# 🚀 Webinar AI - Landing Page  
+**Demo live:** https://landing-lumicast.vercel.app
 
-Landing page untuk webinar AI yang menampilkan informasi tentang acara, pembicara, jadwal, dan formulir pendaftaran. Dibangun menggunakan **Next.js (App Router), Tailwind CSS, dan Framer Motion** untuk tampilan modern, animasi interaktif, serta performa yang optimal.
+![Tangkapan layar Lumicast](public/og.jpg)
 
-## 🎯 **Fitur Utama**  
-✅ **Next.js 14 (App Router)** – Struktur modern dengan performa tinggi.  
-✅ **Tailwind CSS** – Styling cepat dan fleksibel dengan dark mode support.  
-✅ **Framer Motion** – Animasi halus berbasis Intersection Observer.  
-✅ **next/image** – Optimasi gambar otomatis untuk performa lebih cepat.  
-✅ **SEO Optimal** – Metadata lengkap, Open Graph, Twitter Card, dan robots.txt.  
-✅ **Responsif & Aksesibel** – Tata letak yang sempurna di semua perangkat.  
+> Template landing page untuk bisnis fiktif. Formulir di dalamnya hanya demo dan tidak mengirim data.
 
----
+## Konsep
 
-## 🏗 **Teknologi yang Digunakan**  
-- **Next.js 14** (App Router)  
-- **Tailwind CSS**  
-- **Framer Motion**  
-- **next/image**  
-- **Geist Sans & Geist Mono** (Custom Fonts)  
+Bahasa rupa **Rundown Siaran** untuk penyelenggara dari organisasi profesi akuntan: kolom waktu yang lurus, durasi tercetak, dan penanda status. Rapi dan terbaca, bukan meriah.
 
----
+## Halaman
 
-## 📂 **Struktur Proyek**  
-```bash
-📦 my-webinar-landing
-├── 📂 app
-│   ├── 📂 components
-│   │   ├── Hero.jsx
-│   │   ├── About.jsx
-│   │   ├── Speakers.jsx
-│   │   ├── Schedule.jsx
-│   │   ├── RegistrationForm.jsx
-│   ├── page.js
-│   ├── layout.js
-├── 📂 public
-│   ├── 📂 images
-│   │   ├── pp1.png
-│   │   ├── pp2.png
-│   │   ├── ...
-│   ├── favicon.ico
-├── 📜 tailwind.config.js
-├── 📜 postcss.config.js
-├── 📜 next.config.js
-├── 📜 package.json
-├── 📜 README.md
-```
+`/`
 
----
+## Teknologi
 
-## 🔧 **Cara Install & Jalankan**
-### 1️⃣ **Clone Repository**
-```bash
-git clone https://github.com/username/webinar-landing.git
-cd webinar-landing
-```
+- Next.js 15.5 (App Router) dan React 19
+- Tailwind CSS v4
+- JavaScript
+- Heroicons, Framer Motion, Lucide (ikon), React Hook Form
+- Font: Sora, Inter (next/font)
+- SEO: metadata per halaman, Open Graph, JSON-LD, sitemap.xml, dan robots.txt
 
-### 2️⃣ **Install Dependencies**
+## Menjalankan secara lokal
+
 ```bash
 npm install
-```
-
-### 3️⃣ **Jalankan Project**
-```bash
 npm run dev
 ```
-Akses di `http://localhost:3000`.
+
+Buka http://localhost:3000. Untuk build produksi: `npm run build` lalu `npm start`.
 
 ---
 
-## 🚀 **Deployment**
-Gunakan **Vercel** untuk deployment mudah:
-```bash
-npm install -g vercel
-vercel
-```
-
----
-
-## 📝 **To-Do & Pengembangan Selanjutnya**
-- [ ] Tambahkan fitur countdown sebelum webinar dimulai.  
-- [ ] Integrasi dengan Google Calendar & Zoom.  
-- [ ] Kirim email otomatis setelah pendaftaran sukses.  
-
----
-
-## 👨‍💻 **Kontributor**
-- **Nama Kamu** – [GitHub](https://github.com/username)  
-- **Tim Webinar AI** – [Website](https://webinarai.com)  
-
----
-
-## 📄 **Lisensi**
-MIT License – Gunakan & modifikasi dengan bebas! 🚀
+Bagian dari koleksi 17 template landing page di [PortalLanding](https://portal-landing-seven.vercel.app). Dibuat oleh [PintuWeb](https://pintuweb.com), jasa pembuatan website.

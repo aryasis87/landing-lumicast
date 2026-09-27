@@ -11,9 +11,8 @@ const Registration = () => {
 
   const onSubmit = async (data) => {
     setIsSubmitting(true);
-    // Simulasi network request
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    console.log(data);
+    // Halaman contoh: data tidak dikirim ke mana pun (lihat pesan sukses).
+    await new Promise(resolve => setTimeout(resolve, 600));
     setIsSubmitting(false);
     setIsSuccess(true);
     reset();
@@ -54,9 +53,9 @@ const Registration = () => {
                     aria-live="polite"
                   >
                     <CheckCircle className="w-12 h-12 text-live mx-auto mb-4" aria-hidden="true" />
-                    <h2 className="text-xl font-medium text-ink mb-2">Pendaftaran Berhasil!</h2>
+                    <h2 className="text-xl font-medium text-ink mb-2">Terima kasih!</h2>
                     <p className="text-ink-soft mb-6">
-                      Kami telah mengirimkan email konfirmasi ke alamat Anda. Cek juga folder spam/promotions.
+                      Ini halaman contoh, jadi pendaftaran tidak diproses dan tidak ada email yang dikirim.
                     </p>
                     <button
                       type="button"
