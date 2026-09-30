@@ -1,334 +1,105 @@
 'use client';
-import { useState } from 'react';
-import { m, LazyMotion, domAnimation } from 'framer-motion';
-import { useForm } from 'react-hook-form';
-import { ArrowRight, CheckCircle, Phone, Mail, User, Briefcase, MessageSquare } from 'lucide-react';
 
-const Registration = () => {
-  const { register, handleSubmit, formState: { errors }, reset } = useForm();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { PAKET, SIARAN } from '@/lib/siaran';
 
-  const onSubmit = async (data) => {
-    setIsSubmitting(true);
-    // Halaman contoh: data tidak dikirim ke mana pun (lihat pesan sukses).
-    await new Promise(resolve => setTimeout(resolve, 600));
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    reset();
-    setTimeout(() => setIsSuccess(false), 5000);
+const POSISI = ['Ketua / wakil ketua', 'Sekretaris', 'Bendahara', 'Pengawas / pembina', 'Anggota / calon pengurus'];
+
+export default function Registration() {
+  const [paket, setPaket] = useState('Umum');
+  const [selesai, setSelesai] = useState(false);
+
+  useEffect(() => {
+    const p = new URLSearchParams(window.location.search).get('paket');
+    if (p && PAKET.some((x) => x.nama === p)) setPaket(p);
+  }, []);
+
+  const kirim = (e) => {
+    e.preventDefault();
+    // Purwarupa desain: tidak ada data yang dikirim ke mana pun.
+    setSelesai(true);
   };
 
+  const input = 'w-full border border-rule bg-sheet px-4 py-3 text-ink focus:border-live focus:outline-none';
+
   return (
-    <section id="register" className="py-16 bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl sm:text-5xl font-light text-ink mb-3">
-            <span className="text-live font-bold">Daftar</span> Sekarang
-          </h1>
-          <p className="text-ink-soft max-w-2xl mx-auto">
-            Isi formulir berikut untuk mengamankan tempat Anda di training eksklusif ini. Gratis & terbatas!
+    <section id="daftar" className="scroll-mt-16 bg-sheet py-20 md:py-28">
+      <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
+        <div>
+          <p className="slug mb-5 text-live">Daftar</p>
+          <h2 className="text-[2rem] leading-[1.1] font-semibold md:text-[2.6rem]">Satu formulir, tautan dikirim H-1</h2>
+          <p className="mt-5 leading-relaxed">
+            Tautan siaran dan berkas latihan dikirim ke surel Anda sehari sebelum siaran, pukul 16.00. Sebelum masuk, ikuti{' '}
+            <Link href="/cek-perangkat" className="font-medium text-live underline underline-offset-4">daftar cek perangkat</Link>.
           </p>
+          <dl className="mt-8 border-t-2 border-ink text-sm">
+            {[['Siaran', `#${SIARAN.nomor} · ${SIARAN.pendek}`], ['Tanggal', SIARAN.hari], ['Jam', SIARAN.jam]].map(([k, v]) => (
+              <div key={k} className="flex justify-between gap-4 border-b border-rule py-3">
+                <dt className="slug text-ink-soft">{k}</dt>
+                <dd className="text-right text-ink">{v}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
 
-        {/* Form and Info */}
-        <div className="flex flex-col lg:flex-row gap-8">
-          {/* Registration Form */}
-          <LazyMotion features={domAnimation}>
-            <m.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "100px" }}
-              transition={{ type: "tween", ease: "easeOut" }}
-              className="w-full lg:w-1/2"
-            >
-              <form onSubmit={handleSubmit(onSubmit)} className="bg-white border border-rule rounded-xl p-6">
-                {isSuccess ? (
-                  <m.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="text-center py-8"
-                    role="alert"
-                    aria-live="polite"
-                  >
-                    <CheckCircle className="w-12 h-12 text-live mx-auto mb-4" aria-hidden="true" />
-                    <h2 className="text-xl font-medium text-ink mb-2">Terima kasih!</h2>
-                    <p className="text-ink-soft mb-6">
-                      Ini halaman contoh, jadi pendaftaran tidak diproses dan tidak ada email yang dikirim.
-                    </p>
-                    <button
-                      type="button"
-                      onClick={() => setIsSuccess(false)}
-                      className="text-live hover:text-live font-medium text-sm"
-                      aria-label="Daftarkan peserta lain"
-                    >
-                      Daftarkan peserta lain
-                    </button>
-                  </m.div>
-                ) : (
-                  <>
-                    <div className="space-y-4">
-                      {/* Name Field */}
-                      <div>
-                        <label htmlFor="name" className="block text-sm font-medium text-ink-soft mb-1">
-                          Nama Lengkap <span className="text-live">*</span>
-                        </label>
-                        <div className="relative">
-                          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <User className="h-5 w-5 text-ink-soft" aria-hidden="true" />
-                          </div>
-                          <input
-                            id="name"
-                            type="text"
-                            {...register('name', { required: 'Nama lengkap wajib diisi' })}
-                            className={`w-full pl-10 pr-3 py-2.5 rounded-md border ${errors.name ? 'border-live/40' : 'border-rule'} focus:ring-1 focus:ring-red-500 focus:border-live`}
-                            placeholder="Masukkan nama lengkap"
-                            aria-required="true"
-                            aria-invalid={errors.name ? "true" : "false"}
-                          />
-                        </div>
-                        {errors.name && <p className="mt-1 text-xs text-live" role="alert">{errors.name.message}</p>}
-                      </div>
-
-                      {/* Email Field */}
-                      <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-ink-soft mb-1">
-                          Email <span className="text-live">*</span>
-                        </label>
-                        <div className="relative">
-                          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <Mail className="h-5 w-5 text-ink-soft" aria-hidden="true" />
-                          </div>
-                          <input
-                            id="email"
-                            type="email"
-                            {...register('email', { 
-                              required: 'Email wajib diisi',
-                              pattern: {
-                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                message: 'Email tidak valid'
-                              }
-                            })}
-                            className={`w-full pl-10 pr-3 py-2.5 rounded-md border ${errors.email ? 'border-live/40' : 'border-rule'} focus:ring-1 focus:ring-red-500 focus:border-live`}
-                            placeholder="email@contoh.com"
-                            aria-required="true"
-                            aria-invalid={errors.email ? "true" : "false"}
-                          />
-                        </div>
-                        {errors.email && <p className="mt-1 text-xs text-live" role="alert">{errors.email.message}</p>}
-                      </div>
-
-                      {/* Phone Field */}
-                      <div>
-                        <label htmlFor="phone" className="block text-sm font-medium text-ink-soft mb-1">
-                          Nomor WhatsApp <span className="text-live">*</span>
-                        </label>
-                        <div className="relative">
-                          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <Phone className="h-5 w-5 text-ink-soft" aria-hidden="true" />
-                          </div>
-                          <input
-                            id="phone"
-                            type="tel"
-                            {...register('phone', { 
-                              required: 'Nomor WhatsApp wajib diisi',
-                              pattern: {
-                                value: /^[0-9]+$/,
-                                message: 'Hanya angka yang diperbolehkan'
-                              },
-                              minLength: {
-                                value: 10,
-                                message: 'Nomor terlalu pendek'
-                              }
-                            })}
-                            className={`w-full pl-10 pr-3 py-2.5 rounded-md border ${errors.phone ? 'border-live/40' : 'border-rule'} focus:ring-1 focus:ring-red-500 focus:border-live`}
-                            placeholder="81234567890"
-                            aria-required="true"
-                            aria-invalid={errors.phone ? "true" : "false"}
-                          />
-                        </div>
-                        {errors.phone && <p className="mt-1 text-xs text-live" role="alert">{errors.phone.message}</p>}
-                      </div>
-
-                      {/* Status Field */}
-                      <div>
-                        <label htmlFor="status" className="block text-sm font-medium text-ink-soft mb-1">
-                          Status di Organisasi <span className="text-live">*</span>
-                        </label>
-                        <div className="relative">
-                          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <Briefcase className="h-5 w-5 text-ink-soft" aria-hidden="true" />
-                          </div>
-                          <select
-                            id="status"
-                            {...register('status', { required: 'Pilih status Anda' })}
-                            className={`w-full pl-10 pr-3 py-2.5 rounded-md border ${errors.status ? 'border-live/40' : 'border-rule'} focus:ring-1 focus:ring-red-500 focus:border-live`}
-                            aria-required="true"
-                            aria-invalid={errors.status ? "true" : "false"}
-                          >
-                            <option value="">-- Pilih Status --</option>
-                            <option value="pengurus-inti">Pengurus Inti</option>
-                            <option value="staff-divisi">Staff Divisi</option>
-                            <option value="anggota-aktif">Anggota Aktif</option>
-                            <option value="calon-pengurus">Calon Pengurus</option>
-                            <option value="alumni">Alumni/Mentor</option>
-                          </select>
-                        </div>
-                        {errors.status && <p className="mt-1 text-xs text-live" role="alert">{errors.status.message}</p>}
-                      </div>
-
-                      {/* Divisi Field (Optional) */}
-                      <div>
-                        <label htmlFor="divisi" className="block text-sm font-medium text-ink-soft mb-1">
-                          Divisi (Jika Ada)
-                        </label>
-                        <div className="relative">
-                          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <Briefcase className="h-5 w-5 text-ink-soft" aria-hidden="true" />
-                          </div>
-                          <input
-                            id="divisi"
-                            type="text"
-                            {...register('divisi')}
-                            className="w-full pl-10 pr-3 py-2.5 rounded-md border border-rule focus:ring-1 focus:ring-red-500 focus:border-live"
-                            placeholder="Contoh: Divisi Pendidikan"
-                          />
-                        </div>
-                      </div>
-
-                      {/* Expectations Field */}
-                      <div>
-                        <label htmlFor="expectations" className="block text-sm font-medium text-ink-soft mb-1">
-                          Harapan dari Training Ini
-                        </label>
-                        <div className="relative">
-                          <div className="absolute top-3 left-3 pointer-events-none">
-                            <MessageSquare className="h-5 w-5 text-ink-soft" aria-hidden="true" />
-                          </div>
-                          <textarea
-                            id="expectations"
-                            rows={3}
-                            {...register('expectations')}
-                            className="w-full pl-10 pr-3 py-2.5 rounded-md border border-rule focus:ring-1 focus:ring-red-500 focus:border-live"
-                            placeholder="Apa yang ingin Anda pelajari atau dapatkan dari training ini?"
-                          ></textarea>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Submit Button */}
-                    <div className="mt-6">
-                      <button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className={`w-full flex justify-center items-center px-6 py-3 rounded-md bg-live text-white font-medium hover:bg-deck transition-colors ${isSubmitting ? 'opacity-80 cursor-not-allowed' : ''}`}
-                        aria-busy={isSubmitting}
-                      >
-                        {isSubmitting ? (
-                          <>
-                            <span className="inline-block animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent mr-2"></span>
-                            Memproses...
-                          </>
-                        ) : (
-                          <>
-                            Daftar Sekarang
-                            <ArrowRight className="w-4 h-4 ml-2" aria-hidden="true" />
-                          </>
-                        )}
-                      </button>
-                    </div>
-
-                    {/* Privacy Notice */}
-                    <p className="mt-4 text-xs text-ink-soft text-center">
-                      Dengan mendaftar, data Anda akan digunakan untuk keperluan training dan komunikasi terkait acara IAI Muda Malang Raya.
-                    </p>
-                  </>
-                )}
-              </form>
-            </m.div>
-
-            {/* Registration Info */}
-            <m.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "100px" }}
-              transition={{ type: "tween", ease: "easeOut" }}
-              className="w-full lg:w-1/2"
-            >
-              <div className="bg-sheet-2 p-6 rounded-xl border border-rule">
-                <h2 className="text-xl font-medium text-ink mb-6">Informasi Penting</h2>
-
-                <div className="space-y-6">
-                  {/* Benefits */}
-                  <div>
-                    <h3 className="text-lg font-medium text-ink mb-3">Yang Anda dapatkan:</h3>
-                    <ul className="space-y-2">
-                      {[
-                        "Akses ke training live via Zoom",
-                        "Materi presentasi (PDF)",
-                        "Sertifikat partisipasi resmi",
-                        "Rekaman training (untuk peserta terdaftar)",
-                        "Akses ke grup diskusi WhatsApp"
-                      ].map((item, index) => (
-                        <li key={index} className="flex items-start">
-                          <CheckCircle className="w-5 h-5 text-live mt-0.5 mr-2 flex-shrink-0" aria-hidden="true" />
-                          <span className="text-ink-soft">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Important Info */}
-                  <div className="bg-white p-4 rounded-lg border border-rule">
-                    <h3 className="font-medium text-ink mb-2">📌 Catatan Penting:</h3>
-                    <ul className="space-y-1.5 text-sm text-ink-soft">
-                      <li>• Training GRATIS untuk semua anggota</li>
-                      <li>• Kuota terbatas - daftar segera!</li>
-                      <li>• Link Zoom dikirim H-1 via email</li>
-                      <li>• Wajib hadir tepat waktu</li>
-                      <li>• Dress code: Smart Casual</li>
-                    </ul>
-                  </div>
-
-                  {/* Testimonial */}
-                  <div className="bg-white p-4 rounded-lg border border-rule" role="region" aria-label="Testimonial">
-                    <div className="flex items-start">
-                      <div className="flex-shrink-0 mr-3">
-                        <div className="w-10 h-10 bg-live/12 rounded-full flex items-center justify-center text-live font-medium">
-                          AS
-                        </div>
-                      </div>
-                      <div>
-                        <blockquote className="text-ink-soft italic mb-1 text-sm">
-                          "Training ini sangat membantu saya memahami peran sebagai pengurus. Materinya praktis dan langsung applicable!"
-                        </blockquote>
-                        <p className="text-ink font-medium text-sm">Andi Susanto</p>
-                        <p className="text-ink-soft text-xs">Pengurus Gen 8</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Contact */}
-                  <div className="bg-sheet-2 p-4 rounded-lg border border-rule">
-                    <h3 className="font-medium text-ink mb-2 flex items-center">
-                      <Phone className="w-4 h-4 mr-2 text-live" />
-                      Butuh Bantuan?
-                    </h3>
-                    <p className="text-sm text-ink-soft mb-2">Hubungi panitia:</p>
-                    <p className="text-sm text-ink-soft">
-                      <strong>WhatsApp:</strong> 0812-3456-7890<br/>
-                      <strong>Email:</strong> iaimuda.malang@gmail.com
-                    </p>
-                  </div>
+        <div className="border border-rule bg-sheet-2 p-6 sm:p-8">
+          {selesai ? (
+            <div role="status" className="py-8">
+              <p className="slug on-air flex items-center text-live">Tercatat · paket {paket}</p>
+              <p className="mt-4 text-2xl font-semibold text-ink">Terima kasih, sampai jumpa di menit ke-nol.</p>
+              <p className="mt-3 leading-relaxed">Ini purwarupa desain, jadi tidak ada data yang dikirim dan tidak ada surel yang akan datang.</p>
+              <button type="button" onClick={() => setSelesai(false)} className="slug mt-6 border border-ink px-4 py-3 text-ink hover:bg-ink hover:text-white">
+                Isi ulang
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={kirim} className="space-y-5">
+              <fieldset>
+                <legend className="slug mb-3 text-ink">Paket</legend>
+                <div className="grid gap-3 sm:grid-cols-3">
+                  {PAKET.map((p) => (
+                    <label key={p.nama} className={`cursor-pointer border p-3.5 ${paket === p.nama ? 'border-live bg-live/8' : 'border-rule bg-sheet hover:border-ink-soft'}`}>
+                      <input type="radio" name="paket" value={p.nama} checked={paket === p.nama} onChange={() => setPaket(p.nama)} className="sr-only" />
+                      <span className="slug block text-ink">{p.nama}</span>
+                      <span className="mt-1.5 block text-sm text-ink">{p.harga}</span>
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+              <div className="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label htmlFor="nama" className="slug mb-2 block text-ink">Nama lengkap</label>
+                  <input id="nama" name="nama" required autoComplete="name" className={input} />
+                </div>
+                <div>
+                  <label htmlFor="surel" className="slug mb-2 block text-ink">Surel</label>
+                  <input id="surel" name="surel" type="email" required autoComplete="email" className={input} />
+                </div>
+                <div>
+                  <label htmlFor="organisasi" className="slug mb-2 block text-ink">Nama organisasi</label>
+                  <input id="organisasi" name="organisasi" required autoComplete="organization" className={input} />
+                </div>
+                <div>
+                  <label htmlFor="posisi" className="slug mb-2 block text-ink">Posisi</label>
+                  <select id="posisi" name="posisi" required defaultValue="" className={input}>
+                    <option value="" disabled>Pilih posisi</option>
+                    {POSISI.map((p) => <option key={p}>{p}</option>)}
+                  </select>
                 </div>
               </div>
-            </m.div>
-          </LazyMotion>
+              <div>
+                <label htmlFor="harapan" className="slug mb-2 block text-ink">Satu hal yang ingin Anda pahami (boleh kosong)</label>
+                <textarea id="harapan" name="harapan" rows={3} className={`${input} resize-y`} />
+              </div>
+              <button type="submit" className="w-full bg-live py-4 text-sm font-semibold text-white hover:opacity-90">
+                Daftar siaran #{SIARAN.nomor} · paket {paket}
+              </button>
+              <p className="text-xs leading-relaxed">Purwarupa desain — formulir ini tidak mengirim data ke mana pun.</p>
+            </form>
+          )}
         </div>
       </div>
     </section>
   );
-};
-
-export default Registration;
+}

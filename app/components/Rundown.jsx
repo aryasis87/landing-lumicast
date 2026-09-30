@@ -1,6 +1,8 @@
 'use client';
 
+import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { SEGMEN, TOTAL_MENIT } from '@/lib/siaran';
 
 /* ============================================================================
    Bagian penanda Lumicast: RUNDOWN.
@@ -10,56 +12,7 @@ import { motion } from 'framer-motion';
    sendiri kapan mereka bisa kembali bekerja.
    ========================================================================== */
 
-const segmen = [
-  {
-    mulai: '08.30',
-    durasi: '30′',
-    judul: 'Registrasi & uji perangkat',
-    jenis: 'Persiapan',
-    pj: 'Panitia',
-    catatan: 'Tautan dibuka 15 menit lebih awal untuk uji suara.',
-  },
-  {
-    mulai: '09.00',
-    durasi: '120′',
-    judul: 'Standar pelaporan terbaru',
-    jenis: 'Materi',
-    pj: 'Pemateri I',
-    catatan: 'Termasuk 20 menit tanya jawab di akhir segmen.',
-  },
-  {
-    mulai: '11.00',
-    durasi: '90′',
-    judul: 'Studi kasus penyusunan laporan',
-    jenis: 'Praktik',
-    pj: 'Pemateri II',
-    catatan: 'Peserta mengerjakan berkas latihan bersama-sama.',
-  },
-  {
-    mulai: '12.30',
-    durasi: '60′',
-    judul: 'Rehat',
-    jenis: 'Jeda',
-    pj: '—',
-    catatan: 'Ruang tetap terbuka bagi yang ingin berdiskusi.',
-  },
-  {
-    mulai: '13.30',
-    durasi: '120′',
-    judul: 'Etika profesi & diskusi panel',
-    jenis: 'Panel',
-    pj: 'Pemateri I & II',
-    catatan: 'Pertanyaan dikumpulkan sejak segmen pertama.',
-  },
-  {
-    mulai: '15.30',
-    durasi: '30′',
-    judul: 'Penutup & penyerahan sertifikat',
-    jenis: 'Penutup',
-    pj: 'Panitia',
-    catatan: 'Sertifikat dikirim ke surel pada hari yang sama.',
-  },
-];
+const segmen = SEGMEN.map((s) => ({ ...s, durasi: `${s.durasi}′` }));
 
 const warnaJenis = {
   Materi: 'bg-live/12 text-live',
@@ -72,14 +25,14 @@ const warnaJenis = {
 
 export default function Rundown() {
   return (
-    <section id="rundown" className="relative overflow-hidden bg-sheet py-20 md:py-28">
+    <section id="rundown" className="relative scroll-mt-16 overflow-hidden bg-sheet py-20 md:py-28">
       <div aria-hidden="true" className="ruled absolute inset-0" />
 
       <div className="relative z-10 mx-auto max-w-5xl px-6">
         <div className="mb-12 max-w-2xl">
           <p className="slug mb-5 text-live">Rundown</p>
           <h2 className="text-[2rem] leading-[1.1] font-semibold md:text-[2.6rem]">
-            Enam segmen, total 450 menit, tanpa jam karet
+            Enam segmen, total {TOTAL_MENIT} menit, tanpa jam karet
           </h2>
           <p className="mt-5 leading-relaxed text-ink-soft">
             Durasi tiap segmen sudah dikunci sejak rundown disusun. Kalau satu segmen selesai lebih
@@ -127,12 +80,13 @@ export default function Rundown() {
 
         <div className="mt-8 flex flex-col gap-3 border-t-2 border-ink pt-5 sm:flex-row sm:items-center sm:justify-between">
           <span className="slug text-ink-soft">Total tayang</span>
-          <span className="tnum text-lg font-semibold text-ink">450 menit · 08.30–16.00 WIB</span>
+          <span className="tnum text-lg font-semibold text-ink">{TOTAL_MENIT} menit · 08.30–16.00 WIB</span>
         </div>
 
-        <p className="slug mt-8 leading-[1.7] text-ink-soft">
-          Susunan acara di atas adalah contoh untuk keperluan purwarupa desain.
-        </p>
+        <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <p className="slug leading-[1.7] text-ink-soft">Susunan acara di atas adalah contoh untuk keperluan purwarupa desain.</p>
+          <Link href="/cek-perangkat" className="slug shrink-0 border border-ink px-4 py-3 text-ink hover:bg-ink hover:text-white">Cek perangkat sebelum 08.30</Link>
+        </div>
       </div>
     </section>
   );

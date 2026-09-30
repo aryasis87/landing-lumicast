@@ -1,13 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { BERKAS, SEGMEN, SIARAN } from '@/lib/siaran';
 
-const berkas = [
-  ['Penyelenggara', 'IAI Muda Komisariat Malang'],
-  ['Format', 'In-house training, daring'],
-  ['Durasi', '180 menit · 3 segmen'],
-  ['Peserta', 'Anggota muda & umum'],
-];
+const berkas = BERKAS;
 
 export default function Hero() {
   return (
@@ -21,7 +17,7 @@ export default function Hero() {
               transition={{ duration: 0.5 }}
               className="slug on-air mb-7 flex items-center text-white"
             >
-              Siaran terjadwal · Satu hari penuh
+              Siaran #{SIARAN.nomor} · {SIARAN.hari}
             </motion.p>
 
             <motion.h1
@@ -36,9 +32,7 @@ export default function Hero() {
             </motion.h1>
 
             <motion.p className="mt-7 max-w-lg leading-relaxed text-white">
-              In-house training yang dijalankan dengan rundown tercetak: tiap segmen punya durasi
-              pasti, dan tiap pergantian sudah dihitung. Anda tahu persis kapan bisa kembali ke
-              pekerjaan.
+              {SIARAN.judul}: in-house training dengan rundown tercetak. Tiap segmen punya durasi pasti, jadi Anda tahu persis kapan bisa kembali ke pekerjaan.
             </motion.p>
 
             <motion.div
@@ -63,27 +57,29 @@ export default function Hero() {
           </div>
 
           {/* Kartu berkas acara — meniru header lembar rundown */}
-          <motion.dl
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="h-fit bg-white/5 p-7 backdrop-blur-sm"
           >
             <p className="slug mb-6 border-b border-white/20 pb-4 text-white">Berkas Acara</p>
+            <dl>
             {berkas.map(([k, v]) => (
               <div key={k} className="flex flex-col gap-1 border-b border-white/12 py-4 last:border-b-0 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
                 <dt className="slug text-white">{k}</dt>
                 <dd className="text-sm font-medium text-white sm:text-right">{v}</dd>
               </div>
             ))}
-          </motion.dl>
+          </dl>
+          </motion.div>
         </div>
       </div>
 
       {/* Pita waktu di kaki hero */}
       <div className="relative z-10 mt-14 border-t border-white/15">
         <div className="mx-auto grid max-w-6xl grid-cols-2 px-6 sm:grid-cols-4">
-          {['08.30 Registrasi', '09.00 Segmen I', '11.00 Segmen II', '13.30 Segmen III'].map((t) => (
+          {SEGMEN.filter((s) => s.jenis !== 'Jeda').slice(0, 4).map((s) => `${s.mulai} ${s.jenis}`).map((t) => (
             <div key={t} className="timecol border-white/15 px-4 py-5 first:border-l-0">
               <span className="slug tnum text-white">{t}</span>
             </div>
